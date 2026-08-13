@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://stanleyoneandonly88-ops.github.io/torqu3-management-dashboard/sitemap.xml
