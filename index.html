@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- BASE:START (managed by Coding Agent — do not edit) -->
+<base href="/torqu3-management-dashboard/">
+<!-- BASE:END -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  
+
+<!-- SEO Meta Tags -->
+<title>TORQU3 Management Dashboard</title>
+<meta name="description" content="Secure TORQU3 management dashboard for dealer visit progress and sales knowledge requests." />
+<meta property="og:title" content="TORQU3 Management Dashboard" />
+<meta property="og:description" content="Secure TORQU3 management dashboard for dealer visit progress and sales knowledge requests." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="TORQU3 Management Dashboard" />
+<meta name="twitter:description" content="Secure TORQU3 management dashboard for dealer visit progress and sales knowledge requests." />
+<!-- End SEO Meta Tags -->
+<meta name="sheet-data-url" content="https://my.chatbees.io/api/public/landing-pages/6128/sheet-data">
+<meta name="sheet-rows-url" content="https://my.chatbees.io/api/public/landing-pages/6128/sheet-rows">
+<meta name="sheet-writes-enabled" content="true">
+<meta name="sheet-allow-create" content="false">
+<meta name="sheet-allow-delete" content="false">
+<meta name="sheet-writable-columns" content="Status">
+<script data-lp-token-hydrate>
+(function(){try{
+  var slug="lp-msrcamod-1qmzu";
+  var SITEK="";
+  var SK='lp_access_'+slug;
+  var map={access_token:'lp_pw_',allowlist_access_token:'lp_al_',pin_access_token:'lp_pin_',paywall_access_token:'lp_paid_'};
+  function siteTok(){try{return SITEK?localStorage.getItem(SITEK):null;}catch(e){return null;}}
+  var u=new URL(location.href);var found=null;var changed=false;
+  var PINP=true;
+  if(!PINP){try{localStorage.removeItem('lp_pin_'+slug);if(SITEK)localStorage.removeItem(SITEK);}catch(e){}}
+  Object.keys(map).forEach(function(p){var v=u.searchParams.get(p);if(v){found=v;try{if(PINP||p!=='pin_access_token'){localStorage.setItem(map[p]+slug,v);if(SITEK&&p==='pin_access_token')localStorage.setItem(SITEK,v);}}catch(e){}if(p==='pin_access_token'){try{sessionStorage.setItem('lp_fresh_'+slug,'1');}catch(e){}}u.searchParams.delete(p);changed=true;}});
+  if(found){try{sessionStorage.setItem(SK,found);}catch(e){}}
+  else{try{if(!sessionStorage.getItem(SK)){var t=localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug)||siteTok();if(t)sessionStorage.setItem(SK,t);}}catch(e){}}
+  if(changed){try{history.replaceState(null,'',u.toString());}catch(e){}}
+  function getTok(){try{return sessionStorage.getItem(SK)||localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug)||siteTok();}catch(e){return null;}}
+  function needsToken(url,method){if(!url)return false;var s=String(url);var m=(method||'GET').toUpperCase();var isSheetWrite=(m==='POST'||m==='PATCH'||m==='PUT'||m==='DELETE')&&/\/sheet-rows(\/|$|\?)/.test(s);var isSheetRead=/\/sheet-data(\/|$|\?)/.test(s);var isLlm=/\/api\/landing-pages\/public\/[^/]+\/(llm|llm-config)(\/|$|\?)/.test(s);return isSheetWrite||isSheetRead||isLlm;}
+  if(window.fetch){var _f=window.fetch;window.fetch=function(input,init){try{var url=typeof input==='string'?input:(input&&input.url)||'';var method=(init&&init.method)||(input&&input.method)||'GET';if(needsToken(url,method)){var tok=getTok();if(tok){init=init||{};var h=new Headers(init.headers||(typeof input!=='string'?input.headers:undefined)||{});if(!h.has('X-Landing-Page-Token'))h.set('X-Landing-Page-Token',tok);init.headers=h;}}}catch(e){}return _f.call(this,input,init);};}
+  if(window.XMLHttpRequest){var _o=XMLHttpRequest.prototype.open;var _s=XMLHttpRequest.prototype.send;XMLHttpRequest.prototype.open=function(m,u){this.__lpM=m;this.__lpU=u;return _o.apply(this,arguments);};XMLHttpRequest.prototype.send=function(){try{if(needsToken(this.__lpU,this.__lpM)){var tok=getTok();if(tok)this.setRequestHeader('X-Landing-Page-Token',tok);}}catch(e){}return _s.apply(this,arguments);};}
+}catch(e){}})();
+</script>
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://my.chatbees.io/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=6128');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='Ze8i7NEkY3';
+  var apiBase='https://my.chatbees.io';
+  var successSubtext='';var successBtnLabel='Continue';var successBtnColor='#16a34a';var successRedirect='';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  function findPhone(){var ids=['phone','phoneNumber','phone-number','tel','telephone','mobile','mobileNumber','cell','contact-phone','buyer-phone'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.trim())return el.value.trim();}var inputs=document.querySelectorAll('input[type="tel"],input[name*="phone"],input[name*="tel"],input[name*="mobile"],input[placeholder*="phone"],input[placeholder*="Phone"]');for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.trim())return inputs[j].value.trim();}return '';}
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    var phone=findPhone();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    var __pLoc=(document.documentElement.lang||navigator.language||'en');
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,phone:phone||'',amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,locale:__pLoc,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var sidP=urlParams.get('session_id');
+      if(sidP){try{fetch(apiBase+'/api/landing-pages/public/'+slug+'/checkout/confirm',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sessionId:sidP})}).catch(function(){});}catch(e){}}
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+      var subTxt=successSubtext||('Thank you for purchasing '+pName+'.');
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-pay-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      document.body.appendChild(overlay);
+      var pBtn=document.getElementById('lp-pay-success-btn');
+      if(pBtn){pBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
+    }
+  });
+})();
+</script>
+<script data-cart>
+(function(){
+  var slug='Ze8i7NEkY3';
+  var apiBase='https://my.chatbees.io';
+  var successSubtext='';var successBtnLabel='Continue';var successBtnColor='#16a34a';var successRedirect='';
+  function findCartEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findCartName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  function findCartPhone(){var ids=['phone','phoneNumber','phone-number','tel','telephone','mobile','mobileNumber','cell','contact-phone','buyer-phone'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.trim())return el.value.trim();}var inputs=document.querySelectorAll('input[type="tel"],input[name*="phone"],input[name*="tel"],input[name*="mobile"],input[placeholder*="phone"],input[placeholder*="Phone"]');for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.trim())return inputs[j].value.trim();}return '';}
+  var __realCart=function(arg){
+    var items, email='', customerName='', successUrl, cancelUrl, currency;
+    if(Array.isArray(arg)){items=arg;}
+    else if(arg&&typeof arg==='object'){
+      items=arg.items;email=arg.email||'';customerName=arg.name||arg.customerName||'';
+      successUrl=arg.successUrl;cancelUrl=arg.cancelUrl;currency=arg.currency;
+    }
+    if(!Array.isArray(items)||items.length===0){alert('No items in cart.');return Promise.reject('no_items');}
+    var cleanItems=[];var totalCents=0;
+    for(var i=0;i<items.length;i++){
+      var it=items[i];if(!it||typeof it!=='object'){alert('Invalid item at position '+i);return Promise.reject('bad_item');}
+      var nm=typeof it.name==='string'?it.name.trim():'';
+      if(!nm){alert('Item '+(i+1)+' is missing a name.');return Promise.reject('no_name');}
+      var amt=typeof it.amountCents==='number'?it.amountCents:(typeof it.amount==='number'?Math.round(it.amount*100):NaN);
+      if(!isFinite(amt)||amt<1){alert('Item "'+nm+'" needs a valid amount in cents.');return Promise.reject('bad_amount');}
+      var qty=(typeof it.quantity==='number'&&it.quantity>0)?Math.floor(it.quantity):1;
+      cleanItems.push({name:nm,description:it.description||'',amountCents:amt,quantity:qty});
+      totalCents+=amt*qty;
+    }
+    if(totalCents<50){alert('Cart total must be at least $0.50');return Promise.reject('total_too_low');}
+    if(!email)email=findCartEmail();
+    if(!customerName)customerName=findCartName();
+    var cartPhone=findCartPhone();
+    if(!email){var p=window.prompt('Enter your email for the receipt:','');if(p&&p.indexOf('@')>-1){email=p.trim();}else{alert('An email address is required to complete checkout.');return Promise.reject('no_email');}}
+    var successBase=window.location.href.split('?')[0];
+    var body={email:email,name:customerName,items:cleanItems,locale:(document.documentElement.lang||navigator.language||'en')};
+    if(currency)body.currency=currency;
+    if(cartPhone)body.phone=cartPhone;
+    body.successUrl=successUrl||(successBase+'?cart=success&email='+encodeURIComponent(email)+'&session_id={CHECKOUT_SESSION_ID}');
+    body.cancelUrl=cancelUrl||(successBase+'?cart=cancelled');
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/cart/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(body)
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process checkout');throw new Error(d.error);}
+    });
+  };
+  try{Object.defineProperty(window,'__processCart',{value:__realCart,writable:false,configurable:false});}catch(e){window.__processCart=__realCart;}
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('cart')==='success'){
+      var sidC=urlParams.get('session_id');
+      if(sidC){try{fetch(apiBase+'/api/landing-pages/public/'+slug+'/checkout/confirm',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sessionId:sidC})}).catch(function(){});}catch(e){}}
+      if(document.getElementById('payment-success-overlay')||document.getElementById('donation-success-overlay')||document.getElementById('cart-success-overlay'))return;
+      var overlay=document.createElement('div');overlay.id='cart-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+      var subTxt=successSubtext||'Thank you for your order.';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Order Confirmed!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-cart-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      document.body.appendChild(overlay);
+      var cBtn=document.getElementById('lp-cart-success-btn');
+      if(cBtn){cBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen overflow-x-hidden text-slate-100 antialiased">
+  <!-- ========================================================================== -->
+  <!-- NAVBAR: TORQU3 identity, synchronization status, and manual refresh control -->
+  <!-- ========================================================================== -->
+  <nav data-section="navbar" class="sticky top-0 z-40 border-b border-white/10 bg-torque-dark/95 px-4 py-3 backdrop-blur md:px-8 lg:px-10">
+    <div class="mx-auto flex max-w-[1600px] items-center justify-between gap-4">
+      <div class="flex min-w-0 items-center gap-3">
+        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-slate-500 bg-black shadow-lg" aria-hidden="true">
+          <span class="brand-word text-lg font-black text-white">T<span class="brand-three">3</span></span>
+        </div>
+        <div>
+          <div class="brand-word text-xl font-black leading-none text-torque-red sm:text-2xl">TORQU3</div>
+          <div class="mt-1 hidden text-[10px] font-semibold uppercase tracking-[.24em] text-slate-400 sm:block">Management Control</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 sm:gap-4">
+        <div class="hidden text-right md:block">
+          <p id="sync-label" class="text-xs font-semibold text-slate-300">Connecting to management data</p>
+          <p id="sync-time" class="mt-0.5 text-[11px] text-slate-500">Asia/Kuala Lumpur</p>
+        </div>
+        <button id="refresh-btn" type="button" class="inline-flex min-h-10 items-center gap-2 rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm font-bold text-white transition hover:border-torque-red hover:bg-torque-red/10 focus:outline-none focus:ring-2 focus:ring-torque-red sm:px-4" aria-label="Refresh management data">
+          <svg id="refresh-icon" class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6v5h-5M4 18v-5h5M18.5 9A7 7 0 0 0 6.3 6.8L4 11m16 2-2.3 4.2A7 7 0 0 1 5.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="hidden sm:inline">Refresh</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="mx-auto max-w-[1600px] px-4 py-6 md:px-8 lg:px-10">
+    <!-- ======================================================================== -->
+    <!-- DASHBOARD HEADER: Page context and local Malaysia time                    -->
+    <!-- ======================================================================== -->
+    <header data-section="dashboard-header" class="mb-6 flex flex-col justify-between gap-4 border-b border-white/10 pb-6 sm:flex-row sm:items-end">
+      <div>
+        <p class="mb-2 text-xs font-black uppercase tracking-[.25em] text-torque-red">Operations overview</p>
+        <h1 class="text-2xl font-black tracking-tight text-white sm:text-3xl lg:text-4xl">Management Dashboard</h1>
+        <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-400">Monitor dealer progress and resolve field sales knowledge requests from one secure workspace.</p>
+      </div>
+      <div class="rounded-lg border border-white/10 bg-white/[.03] px-4 py-3 sm:text-right">
+        <p class="text-[10px] font-bold uppercase tracking-[.2em] text-slate-500">Kuala Lumpur time</p>
+        <p id="local-clock" class="mt-1 font-mono text-sm font-semibold text-slate-200">—</p>
+      </div>
+    </header>
+
+    <!-- ======================================================================== -->
+    <!-- SHEET DATA: Populated exclusively from the linked Google Sheet            -->
+    <!-- ======================================================================== -->
+    <section data-section="management-data" aria-label="Management records">
+      <div id="sheet-data"></div>
+      <div id="loading-state" class="space-y-6" aria-live="polite">
+        <span class="sr-only">Loading management data</span>
+        <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <div class="loading-shimmer h-32 rounded-xl"></div><div class="loading-shimmer h-32 rounded-xl"></div>
+          <div class="loading-shimmer h-32 rounded-xl"></div><div class="loading-shimmer h-32 rounded-xl"></div>
+        </div>
+        <div class="loading-shimmer h-80 rounded-xl"></div>
+      </div>
+      <div id="menu-error" class="hidden rounded-xl border border-red-500/30 bg-red-500/10 p-6 text-center">
+        <h2 class="font-bold text-red-300">Management data could not be loaded</h2>
+        <p class="mt-2 text-sm text-slate-400">Check your connection and use Refresh. Your sheet records have not been changed.</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="pointer-events-none fixed bottom-5 right-4 z-50 translate-y-3 rounded-lg border border-white/10 bg-[#262a31] px-4 py-3 text-sm font-semibold text-white opacity-0 shadow-2xl transition sm:right-6" role="status" aria-live="polite"></div>
+
+  <script>
+  (function() {
+    var endpoint = document.querySelector('meta[name="sheet-data-url"]')?.content;
+    if (!endpoint) return;
+    var container = document.getElementById('sheet-data');
+    var errorDiv = document.getElementById('menu-error');
+    var rowsUrl = document.querySelector('meta[name="sheet-rows-url"]')?.content;
+    var records = { dealers: [], knowledge: [] };
+    var dealerStatuses = ['New Report','Following Up','Order Won','No Progress'];
+    var knowledgeStatuses = ['New Question','Checking','Answered','Added to Knowledge'];
+    var refreshTimer;
+
+    // ===== SAFE TEXT OUTPUT =====
+    // Purpose: Prevents sheet content from being interpreted as executable HTML.
+    function esc(value) {
+      return String(value == null ? '' : value).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});
+    }
+
+    // ===== DATE DISPLAY =====
+    // Purpose: Formats valid sheet dates using the required Malaysia time zone.
+    function dateText(value, includeTime) {
+      if (!value) return 'Not recorded';
+      var d = new Date(value);
+      if (isNaN(d.getTime())) return esc(value);
+      return new Intl.DateTimeFormat('en-MY', {
+        timeZone:'Asia/Kuala_Lumpur', day:'2-digit', month:'short', year:'numeric',
+        hour: includeTime ? '2-digit' : undefined, minute: includeTime ? '2-digit' : undefined,
+        hour12:true
+      }).format(d);
+    }
+
+    // ===== ACCESS TOKEN LOOKUP =====
+    // Purpose: Uses only the server-signed credential created by the platform gate.
+    function accessToken() {
+      var parts = location.pathname.split('/').filter(Boolean);
+      var slug = parts[parts.length - 1] || '';
+      return localStorage.getItem('lp_pw_'+slug) || localStorage.getItem('lp_pin_'+slug) ||
+        localStorage.getItem('lp_al_'+slug) || sessionStorage.getItem('lp_access_'+slug);
+    }
+
+    function effectiveStatus(row, type) {
+      return row.Status && String(row.Status).trim() ? String(row.Status).trim() : (type === 'dealer' ? 'New Report' : 'New Question');
+    }
+
+    function statusOptions(list, current) {
+      return list.map(function(item){ return '<option value="'+esc(item)+'"'+(item===current?' selected':'')+'>'+esc(item)+'</option>'; }).join('');
+    }
+
+    function badge(status) {
+      var red = status==='New Report'||status==='New Question'||status==='Following Up'||status==='Checking';
+      var green = status==='Order Won'||status==='Answered'||status==='Added to Knowledge';
+      var cls = green ? 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20' : red ? 'bg-red-500/10 text-red-300 border-red-500/20' : 'bg-slate-500/10 text-slate-300 border-slate-500/20';
+      return '<span class="inline-flex rounded-full border px-2 py-1 text-[10px] font-bold '+cls+'">'+esc(status)+'</span>';
+    }
+
+    // ===== DASHBOARD RENDER =====
+    // Purpose: Recalculates metrics, tables, filters, and activity from current rows.
+    function renderDashboard() {
+      var dealers = records.dealers, knowledge = records.knowledge;
+      var follow = dealers.filter(function(r){return effectiveStatus(r,'dealer')==='Following Up';}).length;
+      var pending = knowledge.filter(function(r){return ['New Question','Checking'].indexOf(effectiveStatus(r,'knowledge'))>-1;}).length;
+      var resolved = knowledge.filter(function(r){return ['Answered','Added to Knowledge'].indexOf(effectiveStatus(r,'knowledge'))>-1;}).length;
+      container.innerHTML =
+        '<div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">'+
+          metric('Total Dealer Visits',dealers.length,'Recorded field visits')+
+          metric('Dealers Following Up',follow,'Active opportunities')+
+          metric('Pending Knowledge Questions',pending,'New or under review')+
+          metric('Questions Resolved',resolved,'Answered or documented')+
+        '</div>'+
+        '<div class="mt-6 grid gap-6 xl:grid-cols-[minmax(0,1fr)_340px]">'+
+          '<div class="min-w-0 space-y-6">'+dealerPanel(dealers)+knowledgePanel(knowledge)+'</div>'+
+          '<aside class="rounded-xl border border-white/10 bg-torque-charcoal p-5 shadow-panel">'+
+            '<div class="mb-5"><p class="text-xs font-black uppercase tracking-[.22em] text-torque-red">Latest updates</p><h2 class="mt-1 text-xl font-black">Recent Activity</h2></div>'+
+            '<div id="activity-list">'+activityHtml()+'</div>'+
+          '</aside>'+
+        '</div>';
+      bindControls();
+    }
+
+    function metric(label, value, note) {
+      return '<article class="metric-card rounded-xl border border-white/10 p-5 shadow-panel"><div class="mb-4 h-1 w-10 rounded-full bg-torque-red"></div><p class="text-xs font-bold uppercase tracking-[.14em] text-slate-400">'+label+'</p><p class="mt-2 text-4xl font-black text-white">'+value+'</p><p class="mt-2 text-xs text-slate-500">'+note+'</p></article>';
+    }
+
+    function dealerPanel(rows) {
+      var sales = Array.from(new Set(rows.map(function(r){return r.Sales;}).filter(Boolean))).sort();
+      return '<article class="overflow-hidden rounded-xl border border-white/10 bg-torque-charcoal shadow-panel">'+
+        '<div class="border-b border-white/10 p-5"><div class="flex flex-col justify-between gap-4 lg:flex-row lg:items-end"><div><p class="text-xs font-black uppercase tracking-[.22em] text-torque-red">Field execution</p><h2 class="mt-1 text-xl font-black">Dealer Progress</h2></div>'+
+        '<div class="grid gap-2 sm:grid-cols-3">'+
+          filterSelect('dealer-sales','Sales','<option value="">All sales</option>'+sales.map(function(v){return '<option>'+esc(v)+'</option>';}).join(''))+
+          '<label class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Visit Date<input id="dealer-date" type="date" class="mt-1 min-h-10 w-full rounded-lg border border-white/10 bg-black/20 px-3 text-sm text-white focus:border-torque-red focus:outline-none"></label>'+
+          filterSelect('dealer-status','Status','<option value="">All statuses</option>'+dealerStatuses.map(function(v){return '<option>'+v+'</option>';}).join(''))+
+        '</div></div></div><div id="dealer-table">'+dealerRows(rows)+'</div></article>';
+    }
+
+    function filterSelect(id,label,options) {
+      return '<label class="text-[10px] font-bold uppercase tracking-wider text-slate-500">'+label+'<select id="'+id+'" class="mt-1 min-h-10 w-full rounded-lg border border-white/10 bg-[#171a1f] px-3 text-sm text-white focus:border-torque-red focus:outline-none">'+options+'</select></label>';
+    }
+
+    function dealerRows(rows) {
+      if (!rows.length) return emptyState('No dealer visit reports','New field reports will appear here automatically.');
+      return '<div class="table-scroll overflow-x-auto"><table class="w-full min-w-[1080px] text-left text-sm"><thead class="bg-black/20 text-[10px] uppercase tracking-wider text-slate-500"><tr>'+
+        '<th class="px-5 py-3">Visit Date</th><th class="px-4 py-3">Sales</th><th class="px-4 py-3">Dealer &amp; Address</th><th class="px-4 py-3">Feedback</th><th class="px-4 py-3">Order Intent</th><th class="px-4 py-3">Status</th></tr></thead><tbody class="divide-y divide-white/[.06]">'+
+        rows.map(function(r){var s=effectiveStatus(r,'dealer'); return '<tr class="hover:bg-white/[.025]"><td class="whitespace-nowrap px-5 py-4 text-slate-300">'+dateText(r['Visit Date'],false)+'</td><td class="px-4 py-4 font-bold text-white">'+esc(r.Sales||'—')+'</td><td class="max-w-xs px-4 py-4 text-slate-300">'+esc(r['Dealer & Address']||'—')+'</td><td class="max-w-sm px-4 py-4 text-slate-400">'+esc(r['Feedback Details']||'—')+'</td><td class="px-4 py-4 text-slate-300">'+esc(r['Order Intent']||'—')+'</td><td class="px-4 py-4"><div class="flex items-center gap-2"><select class="status-select min-h-10 w-44 appearance-none rounded-lg border border-white/10 bg-[#111317] px-3 pr-8 text-xs font-bold text-white focus:border-torque-red focus:outline-none" data-type="dealer" data-row="'+r._rowNumber+'">'+statusOptions(dealerStatuses,s)+'</select><span class="save-note w-12 text-[10px] text-slate-500"></span></div></td></tr>';}).join('')+
+        '</tbody></table></div>';
+    }
+
+    function knowledgePanel(rows) {
+      return '<article class="overflow-hidden rounded-xl border border-white/10 bg-torque-charcoal shadow-panel"><div class="border-b border-white/10 p-5"><p class="text-xs font-black uppercase tracking-[.22em] text-torque-red">Sales enablement</p><h2 class="mt-1 text-xl font-black">Knowledge Requests</h2></div><div id="knowledge-table">'+knowledgeRows(rows)+'</div></article>';
+    }
+
+    function knowledgeRows(rows) {
+      if (!rows.length) return emptyState('No knowledge requests','Questions submitted by the sales team will appear here.');
+      return '<div class="table-scroll overflow-x-auto"><table class="w-full min-w-[1180px] text-left text-sm"><thead class="bg-black/20 text-[10px] uppercase tracking-wider text-slate-500"><tr>'+
+        '<th class="px-5 py-3">Captured At</th><th class="px-4 py-3">Sales</th><th class="px-4 py-3">Question</th><th class="px-4 py-3">Category</th><th class="px-4 py-3">Product / Topic</th><th class="px-4 py-3">Agent Result</th><th class="px-4 py-3">Status</th></tr></thead><tbody class="divide-y divide-white/[.06]">'+
+        rows.map(function(r){var s=effectiveStatus(r,'knowledge'); return '<tr class="hover:bg-white/[.025]"><td class="whitespace-nowrap px-5 py-4 text-slate-300">'+dateText(r['Captured At'],true)+'</td><td class="px-4 py-4 font-bold text-white">'+esc(r.Sales||'—')+'</td><td class="max-w-sm px-4 py-4 text-slate-300">'+esc(r.Question||'—')+'</td><td class="px-4 py-4 text-slate-400">'+esc(r.Category||'—')+'</td><td class="px-4 py-4 text-slate-300">'+esc(r['Product / Topic']||'—')+'</td><td class="max-w-sm px-4 py-4 text-slate-400">'+esc(r['Agent Result']||'—')+'</td><td class="px-4 py-4"><div class="flex items-center gap-2"><select class="status-select min-h-10 w-48 appearance-none rounded-lg border border-white/10 bg-[#111317] px-3 pr-8 text-xs font-bold text-white focus:border-torque-red focus:outline-none" data-type="knowledge" data-row="'+r._rowNumber+'">'+statusOptions(knowledgeStatuses,s)+'</select><span class="save-note w-12 text-[10px] text-slate-500"></span></div></td></tr>';}).join('')+
+        '</tbody></table></div>';
+    }
+
+    function emptyState(title,text) {
+      return '<div class="px-5 py-14 text-center"><div class="mx-auto mb-3 h-2 w-2 rounded-full bg-torque-red"></div><h3 class="font-bold text-white">'+title+'</h3><p class="mt-1 text-sm text-slate-500">'+text+'</p></div>';
+    }
+
+    function activityHtml() {
+      var all = records.dealers.map(function(r){return {type:'Dealer Visit',name:r['Dealer & Address']||r.Sales||'Dealer report',status:effectiveStatus(r,'dealer'),date:r['Submitted At']||r['Visit Date']};})
+        .concat(records.knowledge.map(function(r){return {type:'Knowledge',name:r.Question||r['Product / Topic']||'Sales question',status:effectiveStatus(r,'knowledge'),date:r['Captured At']};}))
+        .sort(function(a,b){return new Date(b.date||0)-new Date(a.date||0);}).slice(0,8);
+      if (!all.length) return '<p class="rounded-lg bg-black/20 p-4 text-sm text-slate-500">No recent activity is available.</p>';
+      return '<div class="ml-2 border-l border-white/10 pl-6 space-y-6">'+all.map(function(a){return '<div class="activity-dot relative"><div class="flex items-start justify-between gap-3"><p class="text-[10px] font-black uppercase tracking-wider text-slate-500">'+a.type+'</p>'+badge(a.status)+'</div><p class="mt-2 line-clamp-2 text-sm font-semibold leading-5 text-slate-200">'+esc(a.name)+'</p><p class="mt-1 text-[11px] text-slate-500">'+dateText(a.date,true)+'</p></div>';}).join('')+'</div>';
+    }
+
+    // ===== STATUS-ONLY WRITE =====
+    // Purpose: Patches only the allowlisted Status field on the selected sheet row.
+    function saveStatus(select) {
+      if (!rowsUrl) return showToast('Status update service is unavailable.',true);
+      var type=select.dataset.type, rowNumber=select.dataset.row;
+      var list=type==='dealer'?records.dealers:records.knowledge;
+      var row=list.find(function(r){return String(r._rowNumber)===String(rowNumber);});
+      var previous=row ? effectiveStatus(row,type) : '';
+      var note=select.parentElement.querySelector('.save-note');
+      select.disabled=true; note.textContent='Saving'; note.className='save-note w-12 text-[10px] text-amber-300';
+      fetch(rowsUrl+'/'+encodeURIComponent(rowNumber),{method:'PATCH',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({Status:select.value})})
+        .then(function(r){if(!r.ok) throw new Error('HTTP '+r.status); if(row) row.Status=select.value; renderDashboard(); showToast('Status saved'); setTimeout(loadData,250);})
+        .catch(function(err){console.error('Status update error:',err); select.value=previous; select.disabled=false; note.textContent='Error'; note.className='save-note w-12 text-[10px] text-red-300'; showToast('Status could not be saved.',true);});
+    }
+
+    // ===== CONTROL BINDINGS =====
+    function bindControls() {
+      container.querySelectorAll('[data-row]').forEach(function(el){el.addEventListener('change',function(){saveStatus(el);});});
+      ['dealer-sales','dealer-date','dealer-status'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('change',applyDealerFilters);});
+    }
+
+    function applyDealerFilters() {
+      var sales=document.getElementById('dealer-sales').value, date=document.getElementById('dealer-date').value, status=document.getElementById('dealer-status').value;
+      var filtered=records.dealers.filter(function(r){
+        var rawDate=r['Visit Date'] ? new Date(r['Visit Date']) : null;
+        var rowDate=rawDate&&!isNaN(rawDate) ? [rawDate.getFullYear(),String(rawDate.getMonth()+1).padStart(2,'0'),String(rawDate.getDate()).padStart(2,'0')].join('-') : '';
+        return (!sales||r.Sales===sales)&&(!date||rowDate===date)&&(!status||effectiveStatus(r,'dealer')===status);
+      });
+      document.getElementById('dealer-table').innerHTML=dealerRows(filtered);
+      document.getElementById('dealer-table').querySelectorAll('[data-row]').forEach(function(el){el.addEventListener('change',function(){saveStatus(el);});});
+    }
+
+    function showToast(message,error) {
+      var toast=document.getElementById('toast'); toast.textContent=message;
+      toast.className='pointer-events-none fixed bottom-5 right-4 z-50 rounded-lg border px-4 py-3 text-sm font-semibold text-white opacity-100 shadow-2xl transition sm:right-6 '+(error?'border-red-500/30 bg-red-950':'border-emerald-500/30 bg-[#183329]');
+      clearTimeout(toast._timer); toast._timer=setTimeout(function(){toast.classList.add('opacity-0','translate-y-3');},2600);
+    }
+
+    // ===== SHEET REFRESH =====
+    // Purpose: Reads the platform proxy once and classifies records by tab columns.
+    function loadData() {
+      var button=document.getElementById('refresh-btn'), icon=document.getElementById('refresh-icon');
+      button.disabled=true; icon.classList.add('animate-spin');
+      fetch(endpoint)
+        .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+        .then(function(result) {
+          if (!container || !result.data || result.data.length === 0) {
+            records={dealers:[],knowledge:[]}; renderDashboard();
+            if (errorDiv) errorDiv.classList.add('hidden');
+          } else {
+            records.dealers=result.data.filter(function(row){return row['Record Type']==='Dealer Visit' && (String(row['Dealer & Address']||'').trim() || String(row['Submitted At']||'').trim());});
+            records.knowledge=result.data.filter(function(row){return row['Record Type']==='Knowledge Request' && (String(row.Question||'').trim() || String(row['Captured At']||'').trim());});
+            renderDashboard();
+            if (errorDiv) errorDiv.classList.add('hidden');
+          }
+          document.getElementById('loading-state').classList.add('hidden');
+          document.getElementById('sync-label').textContent='Data synchronized';
+          document.getElementById('sync-time').textContent='Updated '+dateText(new Date().toISOString(),true);
+        })
+        .catch(function(err) {
+          console.error('Sheet data error:', err);
+          document.getElementById('loading-state').classList.add('hidden');
+          document.getElementById('sync-label').textContent='Synchronization failed';
+          if (errorDiv && !container.innerHTML) errorDiv.classList.remove('hidden');
+        })
+        .finally(function(){button.disabled=false;icon.classList.remove('animate-spin');});
+    }
+
+    document.getElementById('refresh-btn').addEventListener('click',loadData);
+    function updateClock(){document.getElementById('local-clock').textContent=new Intl.DateTimeFormat('en-MY',{timeZone:'Asia/Kuala_Lumpur',weekday:'short',day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true}).format(new Date());}
+    updateClock(); setInterval(updateClock,1000);
+    loadData();
+    clearInterval(refreshTimer); refreshTimer=setInterval(loadData,60000);
+  })();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
